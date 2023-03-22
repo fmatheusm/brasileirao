@@ -102,6 +102,7 @@ RSpec.describe Brasfut do
   end
 
   it 'devo ter uma classificac ãoclassificacao' do
+    puts @campeonato.imprimir_classificao
     expect(@campeonato.imprimir_classificao.class).to eq(Terminal::Table)
   end
 end

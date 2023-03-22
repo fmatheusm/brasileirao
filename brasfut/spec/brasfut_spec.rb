@@ -98,6 +98,7 @@ RSpec.describe Brasfut do
 
 
   it 'deve imprimir a tabela' do
+    puts @campeonato.criar_tabela!
     expect(@campeonato.criar_tabela!).to include("RODADA 1\n----------------------\nVAS X CAM")
   end
 

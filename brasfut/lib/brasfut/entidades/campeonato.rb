@@ -21,7 +21,7 @@ class Campeonato
       tabela += "RODADA #{rodada.numero}\n"
       tabela +=  "----------------------\n"
 
-      scala_jogos.map do |jogo|
+      escala_de_jogos.map do |jogo|
 
         tabela += "#{jogo[0]} X #{jogo[1]}\n"
       end
@@ -38,7 +38,7 @@ class Campeonato
   end
 
 
-  def scala_jogos
+  def escala_de_jogos
     jogos = []
     (0...@equipes.length).each do |i|
       (i+1...@equipes.length).each do |j|

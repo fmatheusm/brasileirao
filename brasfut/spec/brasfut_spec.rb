@@ -98,10 +98,11 @@ RSpec.describe Brasfut do
 
 
   it 'deve imprimir a tabela' do
-    expect(@campeonato.criar_tabela!).to include("RODADA 1\n----------------------\nCAM X VAS")
+    expect(@campeonato.criar_tabela!).to include("RODADA 1\n----------------------\nVAS X CAM")
   end
 
   it 'devo ter uma classificac ãoclassificacao' do
     expect(@campeonato.imprimir_classificao.class).to eq(Terminal::Table)
   end
+
 end

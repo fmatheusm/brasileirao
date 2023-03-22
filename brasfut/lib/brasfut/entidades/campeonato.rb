@@ -13,29 +13,6 @@ class Campeonato
     end.sort { |x, y| y.pontos <=> x.pontos }
   end
 
-  def bkp_criar_tabela!
-    mandante_visitante = []
-    numero_da_rodada = []
-    @rodadas.each do |rodada|
-      numero_da_rodada << rodada.numero
-      rodada.partidas.each do |partida|
-        # siglas << partida.mandante.sigla << partida.visitante.sigla
-         mandante_visitante << partida.mandante.sigla << partida.visitante.sigla
-      end
-    end
-
-    return """
-           RODADA #{numero_da_rodada} 
-           ----------------------
-           #{mandante_visitante}
-           """
-
-    ## Implementar a geracao automatica da tabela
-    ## considerando que todos os times devem
-    ## jogar entre sí em turno e returno
-    ## uma vez como mandante e outra como visitante
-  end
-
   def criar_tabela!
     tabela = ''
     mandante_visitante = []
@@ -44,11 +21,9 @@ class Campeonato
       tabela += "RODADA #{rodada.numero}\n"
       tabela +=  "----------------------\n"
 
-      rodada.partidas.each do |partida|
-        # siglas << partida.mandante.sigla << partida.visitante.sigla
-        #  mandante_visitante << partida.mandante.sigla << partida.visitante.sigla
+      scala_jogos.map do |jogo|
 
-        tabela += "#{partida.mandante.sigla} X #{partida.visitante.sigla}\n"
+        tabela += "#{jogo[0]} X #{jogo[1]}\n"
       end
 
       tabela += "\n"
@@ -62,6 +37,17 @@ class Campeonato
     ## uma vez como mandante e outra como visitante
   end
 
+
+  def scala_jogos
+    jogos = []
+    (0...@equipes.length).each do |i|
+      (i+1...@equipes.length).each do |j|
+        jogos.push([equipes[i].sigla, equipes[j].sigla])
+        jogos.push([equipes[j].sigla, equipes[i].sigla])
+      end
+    end
+    return jogos
+  end
 
   def imprimir_tabela
     puts criar_tabela!
@@ -105,4 +91,5 @@ class Campeonato
 
     table
   end
+
 end

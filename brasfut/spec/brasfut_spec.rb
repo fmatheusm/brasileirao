@@ -93,8 +93,15 @@ RSpec.describe Brasfut do
     rodada_2.partidas = [vas_x_cam, fort_x_cur]
     @campeonato.rodadas << rodada_2
 
+    expect(@campeonato.criar_tabela!.class).to eq(String)
+  end
 
-    @campeonato.imprimir_classificao
-    # expect(@campeonato.criar_tabela!).to eq(4)
+
+  it 'deve imprimir a tabela' do
+    expect(@campeonato.criar_tabela!).to include("RODADA 1\n----------------------\nCAM X VAS")
+  end
+
+  it 'devo ter uma classificac ãoclassificacao' do
+    expect(@campeonato.imprimir_classificao.class).to eq(Terminal::Table)
   end
 end

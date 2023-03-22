@@ -103,6 +103,6 @@ class Campeonato
       t.style = { border_top: false, border_bottom: false, border_i: "|" }
     end
 
-    puts table
+    table
   end
 end
